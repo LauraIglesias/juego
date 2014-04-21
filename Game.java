@@ -31,17 +31,18 @@ public class Game
 
     /**
      * Create all the rooms and link their exits together.
+     * Crea todas las habitaciones y vincular sus salidas juntos.
      */
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
+        outside = new Room("outside the main entrance of the university");//fuera de la entrada principal de la universidad
         theater = new Room("in a lecture theater");
         pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        lab = new Room("in a computing lab");//en un laboratorio de computación
+        office = new Room("in the computing admin office");//en la oficina de administración de computación
         
         // initialise room exits
         outside.setExits(null, theater, lab, pub);
@@ -55,6 +56,7 @@ public class Game
 
     /**
      *  Main play routine.  Loops until end of play.
+     *  Rutina de reproducción principal. Los bucles hasta el final del juego.
      */
     public void play() 
     {            
@@ -62,6 +64,8 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
+        //Entrar en el bucle de control principal. Aquí leemos repetidamente órdenes y
+        // las ejecutamos hasta que el juego ha terminado.
                 
         boolean finished = false;
         while (! finished) {
@@ -73,6 +77,7 @@ public class Game
 
     /**
      * Print out the opening message for the player.
+     * Imprima el mensaje inicial para el jugador.
      */
     private void printWelcome()
     {
@@ -100,15 +105,16 @@ public class Game
 
     /**
      * Given a command, process (that is: execute) the command.
-     * @param command The command to be processed.
-     * @return true If the command ends the game, false otherwise.
+     * Dado un comando, el proceso (es decir: lo ejecuta) el comando.
+     * @param command The command to be processed. El comando para su procesamiento.
+     * @return true If the command ends the game, false otherwise. True si el comando termina el juego, false en caso contrario.
      */
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
 
         if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("I don't know what you mean...");//No sé lo que quieres decir ...
             return false;
         }
 
@@ -132,11 +138,13 @@ public class Game
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
+     * Imprime información de ayuda.
+     * Aquí imprimimos algunos, enigmático mensaje estúpido y una lista de las palabras de comando.
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are lost. You are alone. You wander");//Usted está perdido. Usted está solo. Usted deambula
+        System.out.println("around at the university.");//en torno a la universidad
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
@@ -145,11 +153,14 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
+     * Trate de ir en una dirección. 
+     * Si hay una salida, introduzca la nueva sala, de lo contrario mostrará un mensaje de error.
      */
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
+            //si no hay una segunda palabra, no sabemos a dónde ir ...
             System.out.println("Go where?");
             return;
         }
@@ -197,7 +208,10 @@ public class Game
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
+     * "Quit" haber si ha introducido. 
+     * Compruebe el resto de la orden para ver si realmente desea salir del juego.
      * @return true, if this command quits the game, false otherwise.
+     *         true si este comando se cierra el juego, false en caso contrario.
      */
     private boolean quit(Command command) 
     {
@@ -206,7 +220,7 @@ public class Game
             return false;
         }
         else {
-            return true;  // signal that we want to quit
+            return true;  // signal that we want to quit.  Señal de que queremos salir
         }
     }
 }
