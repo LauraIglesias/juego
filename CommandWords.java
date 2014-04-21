@@ -4,9 +4,12 @@
  * 
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
- *
+ * 
  * @author  Michael KÃ¶lling and David J. Barnes
  * @version 2011.07.31
+ * 
+ * Esta clase contiene una enumeración de todas las palabras de comando conocidas por el juego.
+ * Se utiliza para reconocer comandos medida que se escriben in
  */
 
 public class CommandWords
@@ -28,6 +31,8 @@ public class CommandWords
      * Check whether a given String is a valid command word. 
      * @return true if a given string is a valid command,
      * false if it isn't.
+     * Comprobar si una cadena dada es una palabra de comando válida.
+     * @ Return true si una cadena dada es un comando válido, false si no lo es.
      */
     public boolean isCommand(String aString)
     {

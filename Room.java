@@ -11,6 +11,18 @@
  * 
  * @author  Michael KÃ¶lling and David J. Barnes
  * @version 2011.07.31
+ * 
+ * Sala de clase - una habitación en un juego de aventuras.
+ *
+ * Esta clase es parte de la aplicación "World of Zuul".
+  "World of Zuul" es un texto basado en juego de aventura muy simple.
+ *
+ * Un "Habitación" representa un lugar en el escenario del juego. 
+ * Se conecta a otras habitaciones a través de las salidas. 
+ * Las salidas están marcadas norte, este, sur, oeste. Para cada dirección, 
+ * la habitación almacena una referencia a la habitación vecina, o NULL si no 
+ * hay salida en esa dirección.
+ * 
  */
 public class Room 
 {
@@ -24,6 +36,8 @@ public class Room
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
+     * Crear un ambiente descrito "description". Inicialmente, no tiene salidas. 
+     * "description" es algo así como "cocina" o "un patio abierto."
      * @param description The room's description.
      */
     public Room(String description) 
@@ -34,6 +48,7 @@ public class Room
     /**
      * Define the exits of this room.  Every direction either leads
      * to another room or is null (no exit there).
+     * Defina las salidas de esta habitación. Cada dirección o bien lleva a otra habitación o es nulo (sin salida de allí).
      * @param north The north exit.
      * @param east The east east.
      * @param south The south exit.

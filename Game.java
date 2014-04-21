@@ -39,7 +39,7 @@ public class Game
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");//fuera de la entrada principal de la universidad
-        theater = new Room("in a lecture theater");
+        theater = new Room("in a lecture theater");//en una sala de conferencias
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");//en un laboratorio de computación
         office = new Room("in the computing admin office");//en la oficina de administración de computación
