@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -36,15 +36,15 @@ public class Game
     private void createRooms()
     {
         Room hold, biblioteca, mazmorra, torre, comedor, cocina;
-      
+
         // create the rooms
-        hold = new Room("Acabas de entrar en el castillo, te encuentras en el hold");
-        biblioteca = new Room("Estas en la biblioteca");
-        mazmorra = new Room("La mazmorra del castillo");
-        torre = new Room("Estas en la torre mas alta del castillo");
-        comedor = new Room("Estas en la sala del comedor con una mesa gigante y sillas");
-        cocina = new Room("Estas en la cocina");
-        
+        hold = new Room("en el hold, acabas de entrar en el castillo");
+        biblioteca = new Room("en la biblioteca");
+        mazmorra = new Room("en la mazmorra del castillo");
+        torre = new Room("en la torre mas alta del castillo");
+        comedor = new Room("en la sala del comedor con una mesa gigante y sillas");
+        cocina = new Room("en la cocina");
+
         // initialise room exits
         hold.setExits(null, biblioteca, null, comedor);
         biblioteca.setExits(mazmorra, torre, null, hold);
@@ -68,7 +68,7 @@ public class Game
         // execute them until the game is over.
         //Entrar en el bucle de control principal. Aquí leemos repetidamente órdenes y
         // las ejecutamos hasta que el juego ha terminado.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -88,21 +88,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
+        printLocationInfo();
     }
 
     /**
@@ -189,21 +175,7 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            if(currentRoom.northExit != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("west ");
-            }
-            System.out.println();
+            printLocationInfo();
         }
     }
 
@@ -224,5 +196,28 @@ public class Game
         else {
             return true;  // signal that we want to quit.  Señal de que queremos salir
         }
+    }
+
+    /**
+     * Imprime por pantalla la localizacion a la que puede ir el juador desde la sala en la que se encuentra
+     */
+    private void printLocationInfo()
+    {
+        System.out.println("Tu estas " + currentRoom.getDescription());
+        System.out.print("Exits: ");
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
+
     }
 }
