@@ -15,7 +15,7 @@
  * Sala de clase - una habitación en un juego de aventuras.
  *
  * Esta clase es parte de la aplicación "World of Zuul".
-  "World of Zuul" es un texto basado en juego de aventura muy simple.
+"World of Zuul" es un texto basado en juego de aventura muy simple.
  *
  * Un "Habitación" representa un lugar en el escenario del juego. 
  * Se conecta a otras habitaciones a través de las salidas. 
@@ -31,6 +31,7 @@ public class Room
     public Room southExit;
     public Room eastExit;
     public Room westExit;
+    public Room southeastExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -54,7 +55,7 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(Room north, Room east, Room south, Room west, Room southeast) 
     {
         if(north != null)
             northExit = north;
@@ -64,6 +65,8 @@ public class Room
             southExit = south;
         if(west != null)
             westExit = west;
+        if(southeast != null)
+            southeastExit = southeast;
     }
 
     /**
