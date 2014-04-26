@@ -46,12 +46,12 @@ public class Game
         cocina = new Room("en la cocina");
 
         // initialise room exits
-        hold.setExits(null, biblioteca, null, comedor,null);
-        biblioteca.setExits(mazmorra, torre, null, hold,null);
-        mazmorra.setExits(null, null, null, cocina,null);
-        torre.setExits(null, null, null, biblioteca,null);
-        comedor.setExits(cocina, hold, null, null,null);
-        cocina.setExits(null, null, comedor, null,hold);
+        hold.setExits(null, biblioteca, null, comedor,null,null);
+        biblioteca.setExits(mazmorra, torre, null, hold,null,null);
+        mazmorra.setExits(null, null, null, cocina,null,null);
+        torre.setExits(null, null, null, biblioteca,null,mazmorra);
+        comedor.setExits(cocina, hold, null, null,null,null);
+        cocina.setExits(null, null, comedor, null,hold,null);
 
         currentRoom = hold;  // start game outside
     }
