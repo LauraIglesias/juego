@@ -78,8 +78,8 @@ public class Room
     {
         //keySet() ->Devuelve una vista de las claves que figuran en este mapa.El conjunto está respaldado por el mapa,
         //por lo que los cambios en el mapa se reflejan en el conjunto, y viceversa
-        
-        String direccionSalidas = "";
+
+        String direccionSalidas = "Exits:";
         Set<String> claves = direcciones.keySet();//copiamos en el set las claves que figuran en el mapa
         for(String salida : claves) {//recorremos el conjunto de claves
             direccionSalidas += " " + salida;
@@ -92,7 +92,23 @@ public class Room
      */
     public String getDescription()
     {
-        return description;
+        return "Tu estas " + description;
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * Devolver una descripción larga de esta habitación, de forma que: 
+     *     Usted está en el "nombre del salón ' 
+     *     Salidas: norte este noroeste 
+     * 
+     * @return A description of the room, including exits.
+     * @ Return Una descripción de la habitación, incluyendo salidas.
+     */
+    public String getLongDescription()
+    {
+        return getDescription() +"\n"+ getExitString();
     }
 
 }
