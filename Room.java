@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -30,7 +31,7 @@ public class Room
 {
     private String description;
 
-    HashMap<String,Room> direcciones = new HashMap<>();
+    HashMap<String,Room> direcciones;
 
     /**
      * Create a room described "description". Initially, it has
@@ -43,6 +44,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        direcciones = new HashMap<>();
     }
 
     /**
@@ -60,10 +62,8 @@ public class Room
      * @return el objeto de la clase Room asociado a esa salida o null si no hay salida.
      */
     public Room getExit(String direction){
-        Room nextRoom = null;
 
-        nextRoom = direcciones.get(direction);
-        return nextRoom;
+        return direcciones.get(direction);
     }
 
     /**
@@ -76,26 +76,15 @@ public class Room
      */
     public String getExitString()
     {
-        String direccion = " ";
-        if(getExit("north") != null) {
-            direccion = "north ";
+        //keySet() ->Devuelve una vista de las claves que figuran en este mapa.El conjunto está respaldado por el mapa,
+        //por lo que los cambios en el mapa se reflejan en el conjunto, y viceversa
+        
+        String direccionSalidas = "";
+        Set<String> claves = direcciones.keySet();//copiamos en el set las claves que figuran en el mapa
+        for(String salida : claves) {//recorremos el conjunto de claves
+            direccionSalidas += " " + salida;
         }
-        if(getExit("east")!= null) {
-            direccion += "east ";
-        }
-        if(getExit("south") != null) {
-            direccion += "south ";
-        }
-        if(getExit("west") != null) {
-            direccion += "west ";
-        }
-        if(getExit("southeast") != null) {
-            direccion += "southeast ";
-        }
-        if(getExit("northeast") != null) {
-            direccion += "northeast ";
-        }
-        return direccion;
+        return direccionSalidas;
     }
 
     /**

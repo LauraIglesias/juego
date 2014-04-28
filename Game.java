@@ -55,7 +55,7 @@ public class Game
         
         mazmorra.setExit("west", cocina);
         
-        torre.setExit("northeast", mazmorra);
+        torre.setExit("northwest", mazmorra);
         torre.setExit("west", biblioteca);
         
         comedor.setExit("north", cocina);
@@ -207,7 +207,5 @@ public class Game
         System.out.print("Exits: ");
 
         System.out.println(currentRoom.getExitString());
-
-        System.out.println();
     }
 }
