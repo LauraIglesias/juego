@@ -46,13 +46,24 @@ public class Game
         cocina = new Room("en la cocina");
 
         // initialise room exits
-        hold.setExits(null, biblioteca, null, comedor,null,null);
-        biblioteca.setExits(mazmorra, torre, null, hold,null,null);
-        mazmorra.setExits(null, null, null, cocina,null,null);
-        torre.setExits(null, null, null, biblioteca,null,mazmorra);
-        comedor.setExits(cocina, hold, null, null,null,null);
-        cocina.setExits(null, null, comedor, null,hold,null);
-
+        hold.setExit("east", biblioteca);
+        hold.setExit("west", comedor);
+        
+        biblioteca.setExit("north", mazmorra);
+        biblioteca.setExit("east", torre);
+        biblioteca.setExit("west", hold);
+        
+        mazmorra.setExit("west", cocina);
+        
+        torre.setExit("northeast", mazmorra);
+        torre.setExit("west", biblioteca);
+        
+        comedor.setExit("north", cocina);
+        comedor.setExit("east", hold);
+        
+        cocina.setExit("south", comedor);
+        cocina.setExit("southeast", hold);
+        
         currentRoom = hold;  // start game outside
     }
 
@@ -156,8 +167,7 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-
-        currentRoom.getExit(direction);
+        
         Room nextRoom = currentRoom.getExit(direction);
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -196,7 +206,7 @@ public class Game
         System.out.println("Tu estas " + currentRoom.getDescription());
         System.out.print("Exits: ");
 
-        System.out.print(currentRoom.getExitString());
+        System.out.println(currentRoom.getExitString());
 
         System.out.println();
     }
