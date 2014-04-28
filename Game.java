@@ -200,6 +200,7 @@ public class Game
 
     /**
      * Imprime por pantalla la localizacion a la que puede ir el jugador desde la sala en la que se encuentra
+     * y la descripcion de la habitacion en la que se encuentra
      */
     private void printLocationInfo()
     {
