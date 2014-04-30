@@ -48,22 +48,22 @@ public class Game
         // initialise room exits
         hold.setExit("east", biblioteca);
         hold.setExit("west", comedor);
-        
+
         biblioteca.setExit("north", mazmorra);
         biblioteca.setExit("east", torre);
         biblioteca.setExit("west", hold);
-        
+
         mazmorra.setExit("west", cocina);
-        
+
         torre.setExit("northwest", mazmorra);
         torre.setExit("west", biblioteca);
-        
+
         comedor.setExit("north", cocina);
         comedor.setExit("east", hold);
-        
+
         cocina.setExit("south", comedor);
         cocina.setExit("southeast", hold);
-        
+
         currentRoom = hold;  // start game outside
     }
 
@@ -149,7 +149,8 @@ public class Game
         System.out.println("around at the castillo");//en torno al castillo
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help look");
+
+        parser.palabrasDeComamdo().showAll();
     }
 
     /** 
@@ -170,7 +171,7 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        
+
         Room nextRoom = currentRoom.getExit(direction);
         if (nextRoom == null) {
             System.out.println("There is no door!");
