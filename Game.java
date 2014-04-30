@@ -130,6 +130,9 @@ public class Game
         else if (commandWord.equals("look")){
             printLocationInfo();
         }
+        else if (commandWord.equals("eat")){
+            System.out.println("You have eaten now and you are not hungry any more");//Has comido ahora y no tienes más hambre
+        }
 
         return wantToQuit;
     }
@@ -149,9 +152,7 @@ public class Game
         System.out.println("around at the castillo");//en torno al castillo
         System.out.println();
         System.out.println("Your command words are:");
-
-        //parser.palabrasDeComamdo().showAll();
-        parser.printComandosDisponibles();
+        parser.printComandosDisponibles();//imprimimos los comandos disponibles
     }
 
     /** 

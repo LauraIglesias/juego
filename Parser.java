@@ -73,17 +73,8 @@ public class Parser
         }
     }
     /**
-     *  implementar un método en la clase Parser 
-     *  que commands es de tipo CommandWords e invocar dicho método desde la clase Game 
-     *  @return nos devuelva el atributo commands de dicha clase
-     */
-    public CommandWords palabrasDeComamdo()
-    {
-        return commands;
-    }
-    /**
-     * implementar un método en la clase Parser 
      * que consiga imprimir por pantalla todos los comandos disponibles e invocarlo desde la clase Game.
+     * @return imprimir por pantalla todos los comandos disponibles
      */
     public void printComandosDisponibles()
     {
