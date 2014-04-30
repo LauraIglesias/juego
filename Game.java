@@ -38,12 +38,12 @@ public class Game
         Room hold, biblioteca, mazmorra, torre, comedor, cocina;
 
         // create the rooms
-        hold = new Room("en el hold, acabas de entrar en el castillo");
-        biblioteca = new Room("en la biblioteca");
-        mazmorra = new Room("en la mazmorra del castillo");
-        torre = new Room("en la torre mas alta del castillo");
-        comedor = new Room("en la sala del comedor con una mesa gigante y sillas");
-        cocina = new Room("en la cocina");
+        hold = new Room("en el hold, acabas de entrar en el castillo","Encuentra una armadura de niño",20F);
+        biblioteca = new Room("en la biblioteca","El libro a encontrar es El Quijote",1F);
+        mazmorra = new Room("en la mazmorra del castillo","Tienes que encontrar una cadena con bola",15F);
+        torre = new Room("en la torre mas alta del castillo","Coje el pergamino que esta escondido", 0.02F);
+        comedor = new Room("en la sala del comedor con una mesa gigante y sillas","Recoge el candelabro que es más alto",2.5F);
+        cocina = new Room("en la cocina","Necesitas la cuchara con la inscripción del León",0.50F);
 
         // initialise room exits
         hold.setExit("east", biblioteca);
