@@ -150,7 +150,8 @@ public class Game
         System.out.println();
         System.out.println("Your command words are:");
 
-        parser.palabrasDeComamdo().showAll();
+        //parser.palabrasDeComamdo().showAll();
+        parser.printComandosDisponibles();
     }
 
     /** 
