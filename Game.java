@@ -133,7 +133,6 @@ public class Game
             printHelp();
         }
         else if (commandWord.equals("go")) {
-            pilaHabitaciones.push(currentRoom);
             goRoom(command);
         }
         else if (commandWord.equals("quit")) {
@@ -150,7 +149,7 @@ public class Game
                 currentRoom = pilaHabitaciones.pop();
                 printLocationInfo();
             }else{
-                System.out.println("Estas en la entrada del castillo, no puedes volver más atras");
+                System.out.println("Estas al principio del juego, no puedes volver más atras");
             }
         }
 
@@ -199,6 +198,7 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+            pilaHabitaciones.push(currentRoom);
             currentRoom = nextRoom;
             printLocationInfo();
 
