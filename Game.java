@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Stack;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -20,7 +20,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private ArrayList<Room> guardarHabitacionesPorLasQuePasamos;
+    private Stack <Room> pilaHabitaciones;
 
     /**
      * Create the game and initialise its internal map.
@@ -29,7 +29,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
-        guardarHabitacionesPorLasQuePasamos = new ArrayList<>();
+        pilaHabitaciones = new Stack<>();
     }
 
     /**
@@ -66,7 +66,7 @@ public class Game
 
         cocina.setExit("south", comedor);
         cocina.setExit("southeast", hold);
-        
+
         //creamos los objetos
         hold.addItem("Encuentra una armadura de niño",20F);
         biblioteca.addItem("El libro a encontrar es El Quijote",1F);
@@ -94,7 +94,6 @@ public class Game
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
-            guardarHabitacionesPorLasQuePasamos.add(currentRoom);
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
@@ -134,6 +133,7 @@ public class Game
             printHelp();
         }
         else if (commandWord.equals("go")) {
+            pilaHabitaciones.push(currentRoom);
             goRoom(command);
         }
         else if (commandWord.equals("quit")) {
@@ -146,8 +146,12 @@ public class Game
             System.out.println("You have eaten now and you are not hungry any more");//Has comido ahora y no tienes más hambre
         }
         else if (commandWord.equals("back")){
-            currentRoom = guardarHabitacionesPorLasQuePasamos.get(guardarHabitacionesPorLasQuePasamos.size()-2);
-            printLocationInfo();
+            if(!pilaHabitaciones.empty()){
+                currentRoom = pilaHabitaciones.pop();
+                printLocationInfo();
+            }else{
+                System.out.println("Estas en la entrada del castillo, no puedes volver más atras");
+            }
         }
 
         return wantToQuit;
